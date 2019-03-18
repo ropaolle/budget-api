@@ -21,7 +21,8 @@ pm2 start -n "Budget API" index.js
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
 sudo apt-get install certbot
-sudo certbot certonly --manual
+# För att köra certbot utan sudo måste jag sätta config-dir, med sudo får node inte access till filerna.
+certbot certonly --manual --config-dir ~/.certbot/config --logs-dir ~/.certbot/logs --work-dir ~/.certbot/work
 > api.budget.ropaolle.se
 
 # Synology (vi: a, esc, :wq)

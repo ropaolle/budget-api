@@ -37,22 +37,15 @@ app.use('/', middleware.checkToken, require('./routes/services'));
 app.use('/', middleware.checkToken, require('./routes/backup'));
 app.use('/', middleware.checkToken, require('./routes/test'));
 
+const path = '/home/olle/.certbot/config/live/api.budget.ropaolle.se/';
+
 if (NODE_ENV === 'production') {
   https
     .createServer(
       {
-        key: fs.readFileSync(
-          '/etc/letsencrypt/live/api.budget.ropaolle.se/privkey.pem',
-          'utf8'
-        ),
-        cert: fs.readFileSync(
-          '/etc/letsencrypt/live/api.budget.ropaolle.se/cert.pem',
-          'utf8'
-        ),
-        ca: fs.readFileSync(
-          '/etc/letsencrypt/live/api.budget.ropaolle.se/chain.pem',
-          'utf8'
-        )
+        key: fs.readFileSync(path + 'privkey.pem', 'utf8'),
+        cert: fs.readFileSync(path + 'cert.pem', 'utf8'),
+        ca: fs.readFileSync(path + 'chain.pem', 'utf8')
       },
       app
     )
