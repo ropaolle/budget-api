@@ -17,14 +17,14 @@ pm2 start -n "Budget API" index.js
 [How to](https://itnext.io/node-express-letsencrypt-generate-a-free-ssl-certificate-and-run-an-https-server-in-5-minutes-a730fbe528ca)
 
 ```bash
+# Nodeburken2017 192.168.10.46
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
 sudo apt-get install certbot
+sudo certbot certonly --manual
+> api.budget.ropaolle.se
 
-certbot certonly --manual
-
-
-http://api.budget.ropaolle.se/.well-known/acme-challenge/abcdefgh
-http://api.budget.ropaolle.se/well-known/acme-challenge/
-
+# Synology (vi: a, esc, :wq)
+#http://api.budget.ropaolle.se/.well-known/acme-challenge/{key}
+sudo vi /var/lib/letsencrypt/.well-known/acme-challenge/{key}
 ```

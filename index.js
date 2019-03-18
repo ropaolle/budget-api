@@ -41,8 +41,18 @@ if (NODE_ENV === 'production') {
   https
     .createServer(
       {
-        key: fs.readFileSync('/home/olle/.ssh/budget-api.key'),
-        cert: fs.readFileSync('/home/olle/.ssh/budget-api.cert')
+        key: fs.readFileSync(
+          '/etc/letsencrypt/live/api.budget.ropaolle.se/privkey.pem',
+          'utf8'
+        ),
+        cert: fs.readFileSync(
+          '/etc/letsencrypt/live/api.budget.ropaolle.se/cert.pem',
+          'utf8'
+        ),
+        ca: fs.readFileSync(
+          '/etc/letsencrypt/live/api.budget.ropaolle.se/chain.pem',
+          'utf8'
+        )
       },
       app
     )
