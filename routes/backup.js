@@ -36,7 +36,7 @@ router.get('/backup', async (req, res) => {
       expenses: data[4]
     };
 
-    const path = `./api/backup/${format(new Date(), 'YYYYMMDD-HHmmss')}.json`;
+    const path = `./backup/${format(new Date(), 'YYYYMMDD-HHmmss')}.json`;
     const result = await writeFile(path, JSON.stringify(dataObject, null, 4));
 
     return res.json({ result, path });
