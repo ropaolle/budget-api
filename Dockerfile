@@ -1,16 +1,19 @@
+
 FROM node:10
-COPY . /app
 
-# Bundle APP files
-#COPY src src/
-#COPY package.json .
-#COPY pm2.json .
+WORKDIR /home/olle/budget-api
 
-# Install app dependencies
-ENV NPM_CONFIG_LOGLEVEL warn
-# RUN npm install --production
+#COPY . /app
 
-# Show current folder structure in logs
-#RUN ls -al -R
+# Allow to install global npm packages
+ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+ENV PATH=$PATH:/home/node/.npm-global/bin
 
-#CMD [ "pm2-runtime", "start", "pm2.json" ]
+
+#RUN apk-get update && apk-get add python make g++
+
+# Install PM2
+RUN npm i -g pm2
+
+CMD [ "pm2-runtime", "start", "pm2.json" ]
+#CMD ["pm2-runtime", "process.yml"]
