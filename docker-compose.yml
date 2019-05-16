@@ -18,4 +18,3 @@ services:
     ports:
       - "3001:3001"
     #command: "npm start"
-    #command: tail -F anything
