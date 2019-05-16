@@ -1,4 +1,4 @@
-# docker-compose up -d
+# docker-compose up -d --build
 
 version: "2"
 services:
@@ -16,4 +16,4 @@ services:
       - ./:/home/olle/budget-api
     expose:
       - "8081"
-    command: "npm start"
+    #command: "npm start"
