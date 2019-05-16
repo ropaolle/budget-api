@@ -45,3 +45,10 @@ certbot certonly --manual --config-dir ~/.certbot/config --logs-dir ~/.certbot/l
 #http://api.budget.ropaolle.se/.well-known/acme-challenge/{key}
 sudo vi /var/lib/letsencrypt/.well-known/acme-challenge/{key}
 ```
+
+## Docker
+
+```bash
+docker build -t budget-api .
+docker run budget-api
+```
