@@ -1,0 +1,19 @@
+# docker-compose up -d
+
+version: "2"
+services:
+  node:
+    #image: "node:10"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: node-budget-api
+    user: "node"
+    working_dir: /home/olle/budget-api
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./:/home/olle/budget-api
+    expose:
+      - "8081"
+    command: "npm start"
