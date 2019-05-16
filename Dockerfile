@@ -1,7 +1,7 @@
 
 FROM node:10
 
-WORKDIR /home/olle/budget-api
+
 
 #COPY . /app
 
@@ -14,6 +14,10 @@ ENV PATH=$PATH:/home/node/.npm-global/bin
 
 # Install PM2
 RUN npm i -g pm2
+
+# Install npm packages
+#WORKDIR /home/olle/budget-api
+#RUN npm i x
 
 CMD [ "pm2-runtime", "start", "pm2.json" ]
 #CMD ["pm2-runtime", "process.yml"]
