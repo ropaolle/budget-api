@@ -59,9 +59,16 @@ nano /home/olle/budget-api/.env
     NODE_ENV=production
     BUDGET_API_CORS=https://budget.ropaolle.se
 
-
+# Build
 cd /home/olle/budget-api
-docker-compose up -d
-
-# API: http://192.168.10.121:3001/
+docker build -t ropaolle/budget-api .
+ 
+# Run
+docker run --detach \
+   --name budget-api \
+   --env "VIRTUAL_HOST=api.budget.ropaolle.se" \
+   --env "VIRTUAL_PORT=3001" \
+   --env "LETSENCRYPT_HOST=api.budget.ropaolle.se" \
+   --env "LETSENCRYPT_EMAIL=ropaolle@gmail.com" \
+   ropaolle/budget-api:latest  
 ```
