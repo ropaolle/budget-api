@@ -13,8 +13,24 @@ services:
     working_dir: /home/olle/budget-api
     environment:
       - NODE_ENV=production
+      - VIRTUAL_HOST=nginx.ropaolle.se
+      - VIRTUAL_PORT=3000
+      - LETSENCRYPT_HOST=nginx.ropaolle.se
+      - LETSENCRYPT_EMAIL=ropaolle@gmail.com
     volumes:
       - ./:/home/olle/budget-api
     ports:
       - "3001:3001"
     #command: "npm start"
+
+
+#docker run --detach \
+#    --name grafana \
+#    --env "VIRTUAL_HOST=nginx.ropaolle.se" \
+#    --env "VIRTUAL_PORT=3000" \
+#    --env "LETSENCRYPT_HOST=nginx.ropaolle.se" \
+#    --env "LETSENCRYPT_EMAIL=ropaolle@gmail.com" \
+#    grafana/grafana
+
+#80: 192.168.10.2/121
+#443: 192.168.10.107/121

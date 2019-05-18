@@ -16,7 +16,7 @@ pm2 start -n "Budget API" index.js
 
 ```bash
 # Install
-sudo npm install pm2 -g
+sudo npm i pm2 -g
 pm2 completion install
 pm2 startup # Add to autostart
 
@@ -49,6 +49,19 @@ sudo vi /var/lib/letsencrypt/.well-known/acme-challenge/{key}
 ## Docker
 
 ```bash
-docker build -t budget-api .
-docker run budget-api
+nano /home/olle/budget-api/.env
+
+    BUDGET_API_JWT_SECRET=0Mc0y6e1F6mp0Mc0y6e1F6mp0Mc0y6e1F6mp
+    BUDGET_API_DB=mongodb://ifarfar:QpCSdhY16346@ds034797.mlab.com:34797/ropaolle
+    BUDGET_API_PORT=3001
+
+    # Production
+    NODE_ENV=production
+    BUDGET_API_CORS=https://budget.ropaolle.se
+
+
+cd /home/olle/budget-api
+docker-compose up -d
+
+# API: http://192.168.10.121:3001/
 ```
