@@ -1,5 +1,4 @@
-
-FROM node:10
+FROM node:10-alpine
 
 # Allow to install global npm packages
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
