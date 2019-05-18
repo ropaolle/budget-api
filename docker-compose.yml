@@ -10,16 +10,17 @@ services:
       dockerfile: Dockerfile
     container_name: budget-api
     user: "node"
-    working_dir: /home/olle/budget-api
+    #working_dir: /home/olle/budget-api
     environment:
       - NODE_ENV=production
       - VIRTUAL_HOST=api.budget.ropaolle.se
       - VIRTUAL_PORT=3001
       - LETSENCRYPT_HOST=api.budget.ropaolle.se
       - LETSENCRYPT_EMAIL=ropaolle@gmail.com
-    volumes:
-      - ./:/home/olle/budget-api
-    ports:
-      - "3001:3001"
+    #volumes:
+    #  - ./:/home/olle/budget-api
+    #ports:
+    #  - "3001:3001"
     #command: "npm start"
+    network_mode: bridge
     

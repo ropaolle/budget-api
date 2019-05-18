@@ -1,3 +1,17 @@
+# Installerar PM2, npm-packet, kpierar kod och startar app.
+#
+# [Build]
+# docker build -t ropaolle/budget-api .
+# 
+# [Run]
+# docker run --detach \
+#    --name budget-api \
+#    --env "VIRTUAL_HOST=api.budget.ropaolle.se" \
+#    --env "VIRTUAL_PORT=3001" \
+#    --env "LETSENCRYPT_HOST=api.budget.ropaolle.se" \
+#    --env "LETSENCRYPT_EMAIL=ropaolle@gmail.com" \
+#    ropaolle/budget-api:latest    
+
 FROM node:10-alpine
 
 # Allow to install global npm packages
@@ -8,7 +22,6 @@ ENV PATH=$PATH:/home/node/.npm-global/bin
 RUN npm i -g pm2
 
 # Create app directory
-#WORKDIR /usr/src/app
 WORKDIR /home/olle/budget-api
 
 # Install app dependencies
@@ -16,9 +29,10 @@ WORKDIR /home/olle/budget-api
 # where available (npm@5+)
 COPY package*.json ./
 
-RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
+# Development
+#RUN npm install
+# Production
+RUN npm ci --only=production
 
 # Bundle app source
 COPY . .
