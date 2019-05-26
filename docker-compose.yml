@@ -1,0 +1,22 @@
+version: "2"
+
+services:
+  portainer:
+    #image: portainer/portainer
+    build: .
+    container_name: budget-api
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - VIRTUAL_HOST=api.budget.ropaolle.se
+      - VIRTUAL_PORT=3002
+      - LETSENCRYPT_HOST=api.budget.ropaolle.se
+      - LETSENCRYPT_EMAIL=ropaolle@gmail.com
+    ports:
+      - 3002:3001
+
+networks:
+  default:
+    external:
+      name: letsencrypt_default
+
