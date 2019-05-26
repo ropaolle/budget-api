@@ -1,8 +1,7 @@
 version: "2"
 
 services:
-  portainer:
-    #image: portainer/portainer
+  budget-api:
     build: .
     container_name: budget-api
     restart: always
